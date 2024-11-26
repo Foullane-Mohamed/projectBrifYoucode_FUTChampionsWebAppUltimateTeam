@@ -2,7 +2,7 @@
   perspective: 500px;
 }
 .card {
-  background-image: url(../images/badge_total_rush.webp);
+  background-image: url(../images/badge_gold.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,7 +38,7 @@
   justify-content: center;
 }
 .player3 {
-  grid-column: 5/8;
+  grid-column: 4/6;
   grid-row: 9/11;
   transform: rotateX(-20deg);
   display: flex;
