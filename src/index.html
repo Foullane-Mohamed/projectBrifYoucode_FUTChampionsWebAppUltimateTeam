@@ -9,58 +9,11 @@
   </head>
 
   <body>
-    <div class="containerr ">
+    <div class="containerr">
       <div class="stad w-[70%] flex items-center justify-center flex-col gap-4">
-        <div class="stadDiv w-[70%] h-[70rem] mb-10 ">
+        <div class="stadDiv w-[70%] h-[70rem] mb-10">
           <div class="player1">
-            <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-              <div class="mt-2 rounded-l p-2 flex items-start justify-around">
-                <div class="text-sm font-bold">CDM</div>
-                <img src="./images/vini.jpg" class="rounded-full w-16 h-16" />
-                <div class="text-lg font-bold">87</div>
-              </div>
-              <div class="text-center text-sm font-bold mb-2">
-                Mohamed Foullane
-              </div>
-              <div class="flex justify-between items-center mb-4">
-                <div class="text-xs">CDM ++</div>
-                <div class="flex space-x-2">
-                  <img src="./images/brasil.jpg" class="w-5 h-3" />
-                  <img src="./images/real.png" class="w-5 h-5" />
-                </div>
-              </div>
-              <div class="grid grid-cols-6 gap-1 text-center">
-                <div>
-                  <div class="text-xs">PAC</div>
-                  <div class="text-sm font-bold">77</div>
-                </div>
-                <div>
-                  <div class="text-xs">SHO</div>
-                  <div class="text-sm font-bold">78</div>
-                </div>
-                <div>
-                  <div class="text-xs">PAS</div>
-                  <div class="text-sm font-bold">82</div>
-                </div>
-                <div>
-                  <div class="text-xs">DRI</div>
-                  <div class="text-sm font-bold">86</div>
-                </div>
-                <div>
-                  <div class="text-xs">DEF</div>
-                  <div class="text-sm font-bold">85</div>
-                </div>
-                <div>
-                  <div class="text-xs">PHY</div>
-                  <div class="text-sm font-bold">89</div>
-                </div>
-              </div>
-              <div class="flex justify-around items-center mt-4">
-                <div class="text-xs">R!</div>
-                <div class="text-xs">4 W.F</div>
-                <div class="text-xs">3*</div>
-              </div>
-            </div>
+          
           </div>
           <div class="player2">
             <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
@@ -563,7 +516,9 @@
             </div>
           </div>
         </div>
-        <div class="changement w-[90%] mt-10 mb-10 rounded-3xl pt-10 flex flex-wrap gap-4 bg-[#06380464]">
+        <div
+          class="changement w-[90%] mt-10 mb-10 rounded-3xl pt-10 flex flex-wrap gap-4 bg-[#06380464]"
+        >
           <div class="daka">
             <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
               <div class="mt-2 rounded-l p-2 flex items-start justify-around">
@@ -1138,10 +1093,10 @@
             />
           </div>
           <div class="mb-4">
-            <label class="block text-white font-bold mb-2">Drapeau:</label>
+            <label class="block text-white font-bold mb-2">Nationality:</label>
             <input
               type="url"
-              class="input-drapeau w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              class="input-nationality w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div class="mb-4">
@@ -1153,10 +1108,10 @@
           </div>
           <div class="mb-4">
             <label class="block text-white font-bold mb-2"
-              >Logo du Nationalité:</label
+              >flag du Nationalité:</label
             >
             <input
-              class="input-logo-nationalite block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-green-500"
+              class="input-flag-nationalite block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-green-500"
               aria-describedby="file_input_help"
               id="file_input"
               type="file"
@@ -1165,110 +1120,132 @@
           <div class="mb-4">
             <label class="block text-white font-bold mb-2">Logo du club:</label>
             <input
-              type="url"
-              class="input-logo-club w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              class="input-logo-club block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-green-500"
+              aria-describedby="file_input_help"
+              id="file_input"
+              type="file"
             />
           </div>
           <div class="flex flex-col mb-4 mt-4">
             <label for="position" class="text-white font-bold">Position:</label>
             <select
-              name="position"
-              id="position"
               class="select-position w-full mt-3 p-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             >
-              <option value="" disabled selected>Choisi votre position</option>
-              <option value="lw">LW</option>
-              <option value="st">ST</option>
-              <option value="rw">RW</option>
-              <option value="cml">CML</option>
-              <option value="cm">CM</option>
-              <option value="cmr">CMR</option>
-              <option value="lb">LB</option>
-              <option value="cb1">CB1</option>
-              <option value="cb2">CB2</option>
-              <option value="rb">RB</option>
-              <option value="gk">GK</option>
+              <option selected>Choisi votre position</option>
+
+              <option value="GK">GK</option>
+
+              <option value="CM">CM</option>
+              <option value="CB">CB</option>
+              <option value="LB">LB</option>
+              <option value="RB">RB</option>
+              <option value="RB">LW</option>
+              <option value="CDM">CDM</option>
+              <option value="ST">ST</option>
+              <option value="RW">RW</option>
             </select>
           </div>
+          <div class="mb-4">
+            <label class="block text-white font-bold mb-2">Rating</label>
+            <input
+              type="number"
+              class="input-rating w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
 
-          <div class="flex flex-col space-y-4">
+            <div class="player-gk">
+            
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2">Diving</label>
+                <input
+                  type="number"
+                  class="input-diving w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2">Handling</label>
+                <input
+                  type="number"
+                  class="input-handling w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2">Kicking</label>
+                <input
+                  type="number"
+                  class="input-kicking w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2">Reflexes</label>
+                <input
+                  type="number"
+                  class="input-reflexes w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2">Speed</label>
+                <input
+                  type="number"
+                  class="input-speed w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-white font-bold mb-2"
+                  >Positioning</label
+                >
+                <input
+                  type="number"
+                  class="input-positioning w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+            </div>
+            <div style="display: none;" class="player-cm">
+        
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Tir:</label>
+              <label class="block text-white font-bold mb-2">Shooting</label>
               <input
                 type="number"
-                class="input-tir w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-shooting w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Passe:</label>
+              <label class="block text-white font-bold mb-2">Pace</label>
               <input
                 type="number"
-                class="input-passe w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-pace w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Dribble:</label>
+              <label class="block text-white font-bold mb-2">Dribbling</label>
               <input
                 type="number"
-                class="input-dribble w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-dribbling w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Défense:</label>
+              <label class="block text-white font-bold mb-2">Defending</label>
               <input
                 type="number"
-                class="input-defense w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-defending w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Physique:</label>
+              <label class="block text-white font-bold mb-2">Physical</label>
               <input
                 type="number"
-                class="input-physique w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-physical w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
+        
             <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Plongée:</label>
+              <label class="block text-white font-bold mb-2">Passing</label>
               <input
                 type="number"
-                class="input-plongee w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="input-passing w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
-            <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Maniement:</label>
-              <input
-                type="number"
-                class="input-maniement w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Coup pied:</label>
-              <input
-                type="number"
-                class="input-coup-pied w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Réflexes:</label>
-              <input
-                type="number"
-                class="input-reflexes w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Vitesse:</label>
-              <input
-                type="number"
-                class="input-vitesse w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div class="mb-4">
-              <label class="block text-white font-bold mb-2">Placement:</label>
-              <input
-                type="number"
-                class="input-placement w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
+
           </div>
 
           <div class="flex justify-end">
@@ -1282,7 +1259,9 @@
         </form>
       </div>
     </div>
-    <h1 class="title text-[2rem] font-bold	bg-[#ffffff4a] p-10 rounded-3xl">FUT Champions Web App Ultimate Team</h1>
+    <h1 class="title text-[2rem] font-bold bg-[#ffffff4a] p-10 rounded-3xl">
+      FUT Champions Web App Ultimate Team
+    </h1>
     <script src="./js/main.js"></script>
   </body>
 </html>

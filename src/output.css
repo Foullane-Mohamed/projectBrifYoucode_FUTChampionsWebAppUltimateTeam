@@ -746,17 +746,13 @@ video {
   background-color: #083a0457;
 }
 
-.bg-\[\#ffffff84\] {
-  background-color: #ffffff84;
+.bg-\[\#ffffff4a\] {
+  background-color: #ffffff4a;
 }
 
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\#ffffff4a\] {
-  background-color: #ffffff4a;
 }
 
 .bg-gradient-to-r {
