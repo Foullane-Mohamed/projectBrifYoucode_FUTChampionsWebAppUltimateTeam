@@ -239,14 +239,14 @@ function ajouterPlayers() {
           }
         }
       } else if (player2.innerHTML.trim() !== "") {
-        let lastLBIndex = -1;
+        let indexLB = -1;
         for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "LB") {
-            lastLBIndex = i;
+            indexLB = i;
           }
         }
-        if (lastLBIndex !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[lastLBIndex]);
+        if (indexLB !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexLB]);
         }
       }
       break;
@@ -348,21 +348,22 @@ function ajouterPlayers() {
       break;
     case "LW":
       if (player9.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
+      
+          for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "LW") {
             player9.innerHTML = divPlayerCard(dataPlayer[i]);
             break;
           }
         }
       } else {
-        let indexCMD = -1;
+        let indexLW = -1;
         for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "LW") {
-            indexCMD = i;
+            indexLW = i;
           }
         }
-        if (indexCMD !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        if (indexLW !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexLW]);
         }
       }
       break;
@@ -375,14 +376,14 @@ function ajouterPlayers() {
           }
         }
       } else {
-        let indexCMD = -1;
+        let indexST = -1;
         for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "ST") {
-            indexCMD = i;
+            indexST = i;
           }
         }
-        if (indexCMD !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        if (indexST !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexST]);
         }
       }
       break;
@@ -395,14 +396,14 @@ function ajouterPlayers() {
           }
         }
       } else {
-        let indexCMD = -1;
+        let indexRW = -1;
         for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "RW") {
-            indexCMD = i;
+            indexRW = i;
           }
         }
-        if (indexCMD !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        if (indexRW !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexRW]);
         }
       }
       break;
