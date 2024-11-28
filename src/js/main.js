@@ -90,6 +90,7 @@ function selectDataFromInputs() {
     selectPosition.value === "RB" ||
     selectPosition.value === "RB" ||
     selectPosition.value === "CDM" ||
+    selectPosition.value === "LW" ||
     selectPosition.value === "ST" ||
     selectPosition.value === "RW"
   ) {
@@ -114,108 +115,48 @@ function selectDataFromInputs() {
   }
 }
 function ajouterPlayers() {
-  if (selectPosition.value === "GK") {
-    if (player1.innerHTML.trim() === "") {
-  
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "GK") {
-          player1.innerHTML = `
-          <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-            <div class="mt-2 rounded-l p-2 flex items-start justify-around">
-              <div class="text-sm font-bold">GK</div>
-              <img src="${dataPlayer[i].photo}" class="rounded-full w-16 h-16" />
-              <div class="text-lg font-bold">${dataPlayer[i].rating}</div>
-            </div>
-            <div class="text-center text-sm font-bold mb-2">
-              ${dataPlayer[i].nom}
-            </div>
-            <div class="flex justify-between items-center mb-4">
-              <div class="text-xs">CDM ++</div>
-              <div class="flex space-x-2">
-                <img src="${dataPlayer[i].flagNationalite}" class="w-5 h-3" />
-                <img src="${dataPlayer[i].logoClub}" class="w-5 h-5" />
-              </div>
-            </div>
-            <div class="grid grid-cols-6 gap-1 text-center">
-              <div>
-                <div class="text-xs">DIV</div>
-                <div class="text-sm font-bold">${dataPlayer[i].diving}</div>
-              </div>
-              <div>
-                <div class="text-xs">HAN</div>
-                <div class="text-sm font-bold">${dataPlayer[i].handling}</div>
-              </div>
-              <div>
-                <div class="text-xs">KIC</div>
-                <div class="text-sm font-bold">${dataPlayer[i].kicking}</div>
-              </div>
-              <div>
-                <div class="text-xs">SPD</div>
-                <div class="text-sm font-bold">${dataPlayer[i].speed}</div>
-              </div>
-              <div>
-                <div class="text-xs">POS</div>
-                <div class="text-sm font-bold">${dataPlayer[i].positioning}</div>
-              </div>
-            </div>
-            <div class="flex justify-around items-center mt-4">
-              <div class="text-xs">R!</div>
-              <div class="text-xs">4 W.F</div>
-              <div class="text-xs">3*</div>
-            </div>
-          </div>
-          `;
-          break;
-        }
-      }
-    } else {
-  
-      let lastIndexGK = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "GK") {
-          lastIndexGK = i;
-        }
-      }
-
-      if (lastIndexGK !== -1) {
-        divChangement.innerHTML += `
-          <div class="">
+  switch (selectPosition.value) {
+    case "GK":
+      if (player1.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "GK") {
+            player1.innerHTML = `
             <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
               <div class="mt-2 rounded-l p-2 flex items-start justify-around">
                 <div class="text-sm font-bold">GK</div>
-                <img src="${dataPlayer[lastIndexGK].photo}" class="rounded-full w-16 h-16" />
-                <div class="text-lg font-bold">${dataPlayer[lastIndexGK].rating}</div>
+                <img src="${dataPlayer[i].photo}" class="rounded-full w-16 h-16" />
+                <div class="text-lg font-bold">${dataPlayer[i].rating}</div>
               </div>
               <div class="text-center text-sm font-bold mb-2">
-                ${dataPlayer[lastIndexGK].nom}
+                ${dataPlayer[i].nom}
               </div>
               <div class="flex justify-between items-center mb-4">
                 <div class="text-xs">CDM ++</div>
                 <div class="flex space-x-2">
-                  <img src="${dataPlayer[lastIndexGK].flagNationalite}" class="w-5 h-3" />
-                  <img src="${dataPlayer[lastIndexGK].logoClub}" class="w-5 h-5" />
+                  <img src="${dataPlayer[i].flagNationalite}" class="w-5 h-3" />
+                  <img src="${dataPlayer[i].logoClub}" class="w-5 h-5" />
                 </div>
               </div>
               <div class="grid grid-cols-6 gap-1 text-center">
                 <div>
                   <div class="text-xs">DIV</div>
-                  <div class="text-sm font-bold">${dataPlayer[lastIndexGK].diving}</div>
+                  <div class="text-sm font-bold">${dataPlayer[i].diving}</div>
                 </div>
                 <div>
                   <div class="text-xs">HAN</div>
-                  <div class="text-sm font-bold">${dataPlayer[lastIndexGK].handling}</div>
+                  <div class="text-sm font-bold">${dataPlayer[i].handling}</div>
                 </div>
                 <div>
                   <div class="text-xs">KIC</div>
-                  <div class="text-sm font-bold">${dataPlayer[lastIndexGK].kicking}</div>
+                  <div class="text-sm font-bold">${dataPlayer[i].kicking}</div>
                 </div>
                 <div>
                   <div class="text-xs">SPD</div>
-                  <div class="text-sm font-bold">${dataPlayer[lastIndexGK].speed}</div>
+                  <div class="text-sm font-bold">${dataPlayer[i].speed}</div>
                 </div>
                 <div>
                   <div class="text-xs">POS</div>
-                  <div class="text-sm font-bold">${dataPlayer[lastIndexGK].positioning}</div>
+                  <div class="text-sm font-bold">${dataPlayer[i].positioning}</div>
                 </div>
               </div>
               <div class="flex justify-around items-center mt-4">
@@ -224,213 +165,253 @@ function ajouterPlayers() {
                 <div class="text-xs">3*</div>
               </div>
             </div>
-          </div>
-        `;
-      }
-    }
-  }
+            `;
+            break;
+          }
+        }
+      } else if (player1.innerHTML.trim() !== "") {
+        let lastIndexGK = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "GK") {
+            lastIndexGK = i;
+          }
+        }
 
-  if (selectPosition.value === "CB") {
-    if (player2.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "LB") {
-          player2.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
+        if (lastIndexGK !== -1) {
+          divChangement.innerHTML += `
+            <div class="">
+              <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+                <div class="mt-2 rounded-l p-2 flex items-start justify-around">
+                  <div class="text-sm font-bold">GK</div>
+                  <img src="${dataPlayer[lastIndexGK].photo}" class="rounded-full w-16 h-16" />
+                  <div class="text-lg font-bold">${dataPlayer[lastIndexGK].rating}</div>
+                </div>
+                <div class="text-center text-sm font-bold mb-2">
+                  ${dataPlayer[lastIndexGK].nom}
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                  <div class="text-xs">CDM ++</div>
+                  <div class="flex space-x-2">
+                    <img src="${dataPlayer[lastIndexGK].flagNationalite}" class="w-5 h-3" />
+                    <img src="${dataPlayer[lastIndexGK].logoClub}" class="w-5 h-5" />
+                  </div>
+                </div>
+                <div class="grid grid-cols-6 gap-1 text-center">
+                  <div>
+                    <div class="text-xs">DIV</div>
+                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].diving}</div>
+                  </div>
+                  <div>
+                    <div class="text-xs">HAN</div>
+                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].handling}</div>
+                  </div>
+                  <div>
+                    <div class="text-xs">KIC</div>
+                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].kicking}</div>
+                  </div>
+                  <div>
+                    <div class="text-xs">SPD</div>
+                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].speed}</div>
+                  </div>
+                  <div>
+                    <div class="text-xs">POS</div>
+                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].positioning}</div>
+                  </div>
+                </div>
+                <div class="flex justify-around items-center mt-4">
+                  <div class="text-xs">R!</div>
+                  <div class="text-xs">4 W.F</div>
+                  <div class="text-xs">3*</div>
+                </div>
+              </div>
+            </div>
+          `;
         }
       }
-    } else {
-      let lastLBIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "LB") {
-          lastLBIndex = i;
-        }
-      }
-      if (lastLBIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastLBIndex]);
-      }
-    }
-  }
-  
-  if (selectPosition.value === "CB") {
-    if (player3.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CB") {
-          player3.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCBIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CB") {
-          lastCBIndex = i;
-        }
-      }
-      if (lastCBIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCBIndex]);
-      }
-    }
-  }
-  
-  if (selectPosition.value === "CB") {
-    if (player4.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CB") {
-          player4.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCBIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CB") {
-          lastCBIndex = i;
-        }
-      }
-      if (lastCBIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCBIndex]);
-      }
-    }
-  }
-  
-  if (selectPosition.value === "RB") {
-    if (player5.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "RB") {
-          player5.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastRBIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "RB") {
-          lastRBIndex = i;
-        }
-      }
-      if (lastRBIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastRBIndex]);
-      }
-    }
-  }
-  
-  if (selectPosition.value === "CM") {
-    if (player6.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CM") {
-          player6.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    }else if((player8.innerHTML.trim() === "")){
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CM") {
-          player8.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    }
-     else {
-      let lastCMIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CM") {
-          lastCMIndex = i;
-        }
-      }
-      if (lastCMIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCMIndex]);
-      }
-    }
-  }
-  
-  if (selectPosition.value === "CMD") {
-    if (player7.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CMD") {
-          player7.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCMDIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "CMD") {
-          lastCMDIndex = i;
-        }
-      }
-      if (lastCMDIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCMDIndex]);
-      }
-    }
-  }
-  if (selectPosition.value === "LW") {
-    if (player9.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "LW") {
-          player9.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCMDIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "LW") {
-          lastCMDIndex = i;
-        }
-      }
-      if (lastCMDIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCMDIndex]);
-      }
-    }
-  }
-  if (selectPosition.value === "ST") {
-    if (player10.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "ST") {
-          player10.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCMDIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "ST") {
-          lastCMDIndex = i;
-        }
-      }
-      if (lastCMDIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCMDIndex]);
-      }
-    }
-  }
-  if (selectPosition.value === "RW") {
-    if (player11.innerHTML.trim() === "") {
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "RW") {
-          player11.innerHTML = divPlayerCard(dataPlayer[i]);
-          break;
-        }
-      }
-    } else {
-      let lastCMDIndex = -1;
-      for (let i = 0; i < dataPlayer.length; i++) {
-        if (dataPlayer[i].position === "RW") {
-          lastCMDIndex = i;
-        }
-      }
-      if (lastCMDIndex !== -1) {
-        divChangement.innerHTML += divPlayerCard(dataPlayer[lastCMDIndex]);
-      }
-    }
-  }
-  
+      break;
 
-  
+    case "LB":
+      if (player2.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "LB") {
+            player2.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else if (player2.innerHTML.trim() !== "") {
+        let lastLBIndex = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "LB") {
+            lastLBIndex = i;
+          }
+        }
+        if (lastLBIndex !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[lastLBIndex]);
+        }
+      }
+      break;
+
+    case "CB":
+      if (player3.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CB") {
+            player3.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else if (player4.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CB") {
+            player4.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else if (player3.innerHTML.trim() !== "") {
+        let indexCB = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CB") {
+            indexCB = i;
+          }
+        }
+        if (indexCB !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCB]);
+        }
+      }
+      break;
+
+    case "RB":
+      if (player5.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "RB") {
+            player5.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else if (player5.innerHTML.trim() !== "") {
+        let indexRB = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "RB") {
+            indexRB = i;
+          }
+        }
+        if (indexRB !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexRB]);
+        }
+      }
+      break;
+    case "CM":
+      if (player6.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CM") {
+            player6.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else if (player8.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CM") {
+            player8.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else {
+        let indexCM = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CM") {
+            indexCM = i;
+          }
+        }
+        if (indexCM !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCM]);
+        }
+      }
+      break;
+    case "CDM":
+      if (player7.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CDM") {
+            player7.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else {
+        let indexCMD = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "CDM") {
+            indexCMD = i;
+          }
+        }
+        if (indexCMD !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        }
+      }
+      break;
+    case "LW":
+      if (player9.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "LW") {
+            player9.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else {
+        let indexCMD = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "LW") {
+            indexCMD = i;
+          }
+        }
+        if (indexCMD !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        }
+      }
+      break;
+    case "ST":
+      if (player10.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "ST") {
+            player10.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else {
+        let indexCMD = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "ST") {
+            indexCMD = i;
+          }
+        }
+        if (indexCMD !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        }
+      }
+      break;
+    case "RW":
+      if (player11.innerHTML.trim() === "") {
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "RW") {
+            player11.innerHTML = divPlayerCard(dataPlayer[i]);
+            break;
+          }
+        }
+      } else {
+        let indexCMD = -1;
+        for (let i = 0; i < dataPlayer.length; i++) {
+          if (dataPlayer[i].position === "RW") {
+            indexCMD = i;
+          }
+        }
+        if (indexCMD !== -1) {
+          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
+        }
+      }
+      break;
+  }
 
   function divPlayerCard(player) {
     return `
-      <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-        <div class="mt-2 rounded-l p-2 flex items-start justify-around">
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+    <div class="mt-2 rounded-l p-2 flex items-start justify-around">
           <div class="text-sm font-bold">${player.position}</div>
           <img src="${player.photo}" class="rounded-full w-16 h-16" />
           <div class="text-lg font-bold">${player.rating}</div>
@@ -446,14 +427,8 @@ function ajouterPlayers() {
           </div>
         </div>
         <div class="grid grid-cols-6 gap-1 text-center">
-          <div>
-            <div class="text-xs">POS</div>
-            <div class="text-sm font-bold">${player.position}</div>
-          </div>
-          <div>
-            <div class="text-xs">RAT</div>
-            <div class="text-sm font-bold">${player.rating}</div>
-          </div>
+        
+        
           <div>
             <div class="text-xs">SHO</div>
             <div class="text-sm font-bold">${player.shooting}</div>
@@ -488,5 +463,3 @@ function ajouterPlayers() {
     `;
   }
 }
-
-
