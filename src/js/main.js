@@ -24,17 +24,6 @@ let selectPosition = document.querySelector(".select-position");
 let inputsDivplayerGk = document.querySelector(".player-gk");
 let inputsDivplayerCm = document.querySelector(".player-cm");
 let divChangement = document.querySelector(".changement");
-let player1 = document.querySelector(".player1");
-let player2 = document.querySelector(".player2");
-let player3 = document.querySelector(".player3");
-let player4 = document.querySelector(".player4");
-let player5 = document.querySelector(".player5");
-let player6 = document.querySelector(".player6");
-let player7 = document.querySelector(".player7");
-let player8 = document.querySelector(".player8");
-let player9 = document.querySelector(".player9");
-let player10 = document.querySelector(".player10");
-let player11 = document.querySelector(".player11");
 let errorPlayerName = document.querySelector(".input-nom");
 let errorPlayerPhoto = document.querySelector(".input-photo");
 let errorPlayerClub = document.querySelector(".input-club");
@@ -54,7 +43,18 @@ let errorDribbling = document.querySelector(".input-dribbling");
 let errorDefending = document.querySelector(".input-defending");
 let errorPhysical = document.querySelector(".input-physical");
 let errorPassing = document.querySelector(".input-passing");
-let dataPlayer = [];
+let player1 = document.querySelector(".player1");
+let player2 = document.querySelector(".player2");
+let player3 = document.querySelector(".player3");
+let player4 = document.querySelector(".player4");
+let player5 = document.querySelector(".player5");
+let player6 = document.querySelector(".player6");
+let player7 = document.querySelector(".player7");
+let player8 = document.querySelector(".player8");
+let player9 = document.querySelector(".player9");
+let player10 = document.querySelector(".player10");
+let player11 = document.querySelector(".player11");
+let dataPlayer =  JSON.parse(localStorage.getItem('dataPlayer')) || [];
 
 selectPosition.addEventListener("change", () => {
   if (selectPosition.value === "GK") {
@@ -65,133 +65,201 @@ selectPosition.addEventListener("change", () => {
     inputsDivplayerCm.style.display = "block";
   }
 });
-
+// form validation 
 btnEnter.addEventListener("click", () => {
-  inputImpty();
-  selectDataFromInputs();
-  ajouterPlayers();
-  cleanInputs();
-  cleanInputs();
-});
+  let formIsValid = true;
 
-function cleanInputs() {
-  inputNom.value = "";
 
-  inputNationality.value = "";
-  inputClub.value = "";
+  if (inputNom.value === "") {
+    document.querySelector(".error-nom").innerHTML = "Le nom du joueur est requis";
+    inputNom.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-nom").innerHTML = "";
+    inputNom.style.borderColor = "green";
+  }
 
-  selectPosition.value = "";
-  inputRating.value = "";
 
-  inputHandling.value = "";
+  if (inputPhoto.value === "") {
+    document.querySelector(".error-photo").innerHTML = "La photo du joueur est requise";
+    inputPhoto.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-photo").innerHTML = "";
+    inputPhoto.style.borderColor = "green";
+  }
 
-  inputKicking.value = "";
+  if (inputNationality.value === "") {
+    document.querySelector(".error-nationality").innerHTML = "La nationalité est requise";
+    inputNationality.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-nationality").innerHTML = "";
+    inputNationality.style.borderColor = "green";
+  }
 
-  inputReflexes.value = "";
+  if (inputClub.value === "") {
+    document.querySelector(".error-club").innerHTML = "Le club est requis";
+    inputClub.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-club").innerHTML = "";
+    inputClub.style.borderColor = "green";
+  }
 
-  inputSpeed.value = "";
+  if (inputFlagNationalite.value === "") {
+    document.querySelector(".error-flagNationalite").innerHTML = "Le drapeau est requis";
+    inputFlagNationalite.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-flagNationalite").innerHTML = "";
+    inputFlagNationalite.style.borderColor = "green";
+  }
 
-  inputPositioning.value = "";
+  if (inputLogoClub.value === "") {
+    document.querySelector(".error-logoClub").innerHTML = "Le logo du club est requis";
+    inputLogoClub.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-logoClub").innerHTML = "";
+    inputLogoClub.style.borderColor = "green";
+  }
 
-  inputShooting.value = "";
-  inputPace.value = "";
+  if (selectPosition.value === "Choisi votre position") {
+    document.querySelector(".error-position").innerHTML = "Veuillez sélectionner une position";
+    selectPosition.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-position").innerHTML = "";
+    selectPosition.style.borderColor = "green";
+  }
 
-  inputDribbling.value = "";
-
-  inputDefending.value = "";
-
-  inputPhysical.value = "";
-
-  inputPassing.value = "";
-}
-function cleanInputs() {
-  inputHandling.value === "";
-
-  inputKicking.value === "";
-
-  inputReflexes.value === "";
-
-  inputSpeed.value === "";
-
-  inputPositioning.value === "";
-
-  inputShooting.value === "";
-
-  inputPace.value === "";
-
-  inputDribbling.value === "";
-
-  inputDefending.value === "";
-
-  inputPhysical.value === "";
-
-  inputPassing.value === "";
-}
-function inputImpty() {
+  if (inputRating.value === "" || inputRating.value < 1 || inputRating.value > 99) {
+    document.querySelector(".error-rating").innerHTML = "La note doit être entre 1 et 99";
+    inputRating.style.borderColor = "red";
+    formIsValid = false;
+  } else {
+    document.querySelector(".error-rating").innerHTML = "";
+    inputRating.style.borderColor = "green";
+  }
   if (selectPosition.value === "GK") {
-    if (inputDiving.value === "") {
-      errorDiving.innerHTML = "Diving skill is required";
+    if (inputDiving.value === "" || inputDiving.value < 0 || inputDiving.value > 99) {
+      document.querySelector(".error-diving").textContent = "La plongeon doit être entre 0 et 99";
+      inputDiving.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorDiving.innerHTML = "";
-    }
-    if (inputHandling.value === "") {
-      errorHandling.innerHTML = "Handling skill is required";
-    } else {
-      errorHandling.innerHTML = "";
-    }
-    if (inputKicking.value === "") {
-      errorKicking.innerHTML = "Kicking skill is required";
-    } else {
-      errorKicking.innerHTML = "";
-    }
-    if (inputReflexes.value === "") {
-      errorReflexes.innerHTML = "Reflexes skill is required";
-    } else {
-      errorReflexes.innerHTML = "";
-    }
-    if (inputSpeed.value === "") {
-      errorSpeed.innerHTML = "Speed skill is required";
-    } else {
-      errorSpeed.innerHTML = "";
-    }
-    if (inputPositioning.value === "") {
-      errorPositioning.innerHTML = "Positioning skill is required";
-    } else {
-      errorPositioning.innerHTML = "";
+      document.querySelector(".error-diving").textContent = "";
+      inputDiving.style.borderColor = "green";
     }
 
-    if (inputShooting.value === "") {
-      errorShooting.innerHTML = "Shooting skill is required";
+    if (inputHandling.value === "" || inputHandling.value < 0 || inputHandling.value > 99) {
+      document.querySelector(".error-handling").textContent = "La prise de balle doit être entre 0 et 99";
+      inputHandling.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorShooting.innerHTML = "";
+      document.querySelector(".error-handling").textContent = "";
+      inputHandling.style.borderColor = "green";
     }
-    if (inputPace.value === "") {
-      errorPace.innerHTML = "Pace skill is required";
+
+    if (inputKicking.value === "" || inputKicking.value < 0 || inputKicking.value > 99) {
+      document.querySelector(".error-kicking").textContent = "Les coups de pied doivent être entre 0 et 99";
+      inputKicking.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorPace.innerHTML = "";
+      document.querySelector(".error-kicking").textContent = "";
+      inputKicking.style.borderColor = "green";
     }
-    if (inputDribbling.value === "") {
-      errorDribbling.innerHTML = "Dribbling skill is required";
+
+    if (inputReflexes.value === "" || inputReflexes.value < 0 || inputReflexes.value > 99) {
+      document.querySelector(".error-reflexes").textContent = "Les réflexes doivent être entre 0 et 99";
+      inputReflexes.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorDribbling.innerHTML = "";
+      document.querySelector(".error-reflexes").textContent = "";
+      inputReflexes.style.borderColor = "green";
     }
-    if (inputDefending.value === "") {
-      errorDefending.innerHTML = "Defending skill is required";
+
+    if (inputSpeed.value === "" || inputSpeed.value < 0 || inputSpeed.value > 99) {
+      document.querySelector(".error-speed").textContent = "La vitesse doit être entre 0 et 99";
+      inputSpeed.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorDefending.innerHTML = "";
+      document.querySelector(".error-speed").textContent = "";
+      inputSpeed.style.borderColor = "green";
     }
-    if (inputPhysical.value === "") {
-      errorPhysical.innerHTML = "Physical skill is required";
+
+    if (inputPositioning.value === "" || inputPositioning.value < 0 || inputPositioning.value > 99) {
+      document.querySelector(".error-positioning").textContent = "Le positionnement doit être entre 0 et 99";
+      inputPositioning.style.borderColor = "red";
+      formIsValid = false;
     } else {
-      errorPhysical.innerHTML = "";
-    }
-    if (inputPassing.value === "") {
-      errorPassing.innerHTML = "Passing skill is required";
-    } else {
-      errorPassing.innerHTML = "";
+      document.querySelector(".error-positioning").textContent = "";
+      inputPositioning.style.borderColor = "green";
     }
   }
-}
+
+  if (selectPosition.value !== "GK" && selectPosition.value !== "Choisi votre position") {
+    if (inputShooting.value === "" || inputShooting.value < 0 || inputShooting.value > 99) {
+      document.querySelector(".error-shooting").textContent = "Le tir doit être entre 0 et 99";
+      inputShooting.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-shooting").textContent = "";
+      inputShooting.style.borderColor = "green";
+    }
+
+    if (inputPace.value === "" || inputPace.value < 0 || inputPace.value > 99) {
+      document.querySelector(".error-pace").textContent = "La vitesse doit être entre 0 et 99";
+      inputPace.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-pace").textContent = "";
+      inputPace.style.borderColor = "green";
+    }
+
+    if (inputDribbling.value === "" || inputDribbling.value < 0 || inputDribbling.value > 99) {
+      document.querySelector(".error-dribbling").textContent = "Le dribble doit être entre 0 et 99";
+      inputDribbling.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-dribbling").textContent = "";
+      inputDribbling.style.borderColor = "green";
+    }
+
+    if (inputDefending.value === "" || inputDefending.value < 0 || inputDefending.value > 99) {
+      document.querySelector(".error-defending").textContent = "La défense doit être entre 0 et 99";
+      inputDefending.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-defending").textContent = "";
+      inputDefending.style.borderColor = "green";
+    }
+
+    if (inputPhysical.value === "" || inputPhysical.value < 0 || inputPhysical.value > 99) {
+      document.querySelector(".error-physical").textContent = "Le physique doit être entre 0 et 99";
+      inputPhysical.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-physical").textContent = "";
+      inputPhysical.style.borderColor = "green";
+    }
+
+    if (inputPassing.value === "" || inputPassing.value < 0 || inputPassing.value > 99) {
+      document.querySelector(".error-passing").textContent = "La passe doit être entre 0 et 99";
+      inputPassing.style.borderColor = "red";
+      formIsValid = false;
+    } else {
+      document.querySelector(".error-passing").textContent = "";
+      inputPassing.style.borderColor = "green";
+    }
+  }
+
+  if (formIsValid) {
+    selectDataFromInputs();
+    ajouterPlayers();
+  }
+});
+//-- form validation --//
 
 function selectDataFromInputs() {
   let PhotosUrl = inputPhoto.files[0];
@@ -204,38 +272,27 @@ function selectDataFromInputs() {
   let logoClub = URL.createObjectURL(logoUrl);
   let myObject = {};
   if (selectPosition.value === "GK") {
-    if (
-      inputNom.value != "" &&
-      inputNationality.value !== "" &&
-      inputClub.value != "" &&
-      selectPosition.value !== "" &&
-      inputRating.value != "" &&
-      inputHandling.value != "" &&
-      inputKicking.value != "" &&
-      inputReflexes.value != "" &&
-      inputSpeed.value != "" &&
-      inputPositioning.value != ""
-    ) {
-      myObject = {
-        nom: inputNom.value,
-        photo: photoPlayer,
-        nationality: inputNationality.value,
-        club: inputClub.value,
-        flagNationalite: flagNationalite,
-        logoClub: logoClub,
-        position: selectPosition.value,
-        rating: inputRating.value,
+    myObject = {
+      nom: inputNom.value,
+      photo: photoPlayer,
+      
+      nationality: inputNationality.value,
+      club: inputClub.value,
+      flagNationalite: flagNationalite,
+      logoClub: logoClub,
+      position: selectPosition.value,
+      rating: inputRating.value,
 
-        diving: inputDiving.value,
-        handling: inputHandling.value,
-        kicking: inputKicking.value,
-        reflexes: inputReflexes.value,
-        speed: inputSpeed.value,
-        positioning: inputPositioning.value,
-      };
-      dataPlayer.push(myObject);
-    } else {
-    }
+      diving: inputDiving.value,
+      handling: inputHandling.value,
+      kicking: inputKicking.value,
+      reflexes: inputReflexes.value,
+      speed: inputSpeed.value,
+      positioning: inputPositioning.value,
+    };
+    dataPlayer.push(myObject);
+     localStorage.setItem('dataPlayer', JSON.stringify(dataPlayer));
+
   } else if (
     selectPosition.value === "CM" ||
     selectPosition.value === "CB" ||
@@ -247,38 +304,24 @@ function selectDataFromInputs() {
     selectPosition.value === "ST" ||
     selectPosition.value === "RW"
   ) {
-    if (
-      inputNom.value !== "" &&
-      inputNationality.value !== "" &&
-      inputClub.value !== "" &&
-      selectPosition.value !== "" &&
-      inputRating.value !== "" &&
-      inputShooting.value !== "" &&
-      inputPace.value !== "" &&
-      inputDribbling.value !== "" &&
-      inputDefending.value !== "" &&
-      inputPhysical.value !== "" &&
-      inputPassing.value !== ""
-    ) {
-      myObject = {
-        nom: inputNom.value,
-        photo: photoPlayer,
-        nationality: inputNationality.value,
-        club: inputClub.value,
-        flagNationalite: flagNationalite,
-        logoClub: logoClub,
-        position: selectPosition.value,
-        rating: inputRating.value,
-
-        shooting: inputShooting.value,
-        pace: inputPace.value,
-        dribbling: inputDribbling.value,
-        defending: inputDefending.value,
-        physical: inputPhysical.value,
-        passing: inputPassing.value,
-      };
-      dataPlayer.push(myObject);
-    }
+    myObject = {
+      nom: inputNom.value,
+      photo: photoPlayer,
+      nationality: inputNationality.value,
+      club: inputClub.value,
+      flagNationalite: flagNationalite,
+      logoClub: logoClub,
+      position: selectPosition.value,
+      rating: inputRating.value,
+      shooting: inputShooting.value,
+      pace: inputPace.value,
+      dribbling: inputDribbling.value,
+      defending: inputDefending.value,
+      physical: inputPhysical.value,
+      passing: inputPassing.value,
+    };
+    dataPlayer.push(myObject);
+     localStorage.setItem('dataPlayer', JSON.stringify(dataPlayer));
   }
 }
 function ajouterPlayers() {
@@ -288,11 +331,31 @@ function ajouterPlayers() {
         for (let i = 0; i < dataPlayer.length; i++) {
           if (dataPlayer[i].position === "GK") {
             player1.innerHTML = `
+            
             <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-              <div class="mt-2 rounded-l p-2 flex items-start justify-around">
-                <div class="text-sm font-bold">GK</div>
-                <img src="${dataPlayer[i].photo}" class="rounded-full w-16 h-16" />
+    
+              <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+                <div class="text-sm font-bold">
+                <h5>GK</h5>
                 <div class="text-lg font-bold">${dataPlayer[i].rating}</div>
+                </div>
+                <img src="${dataPlayer[i].photo}" class="rounded-full w-16 h-16" />
+      <div class="flex gap-2 " >
+      <button
+        type="button"
+        onclick="deletePlayer()"
+        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+              <button
+            type="button"
+            onclick="editePlayers()"
+            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
+
+            <i class="fa-solid fa-pen-to-square text-white" ></i>
+          </button>  
+    </div>
               </div>
               <div class="text-center text-sm font-bold mb-2">
                 ${dataPlayer[i].nom}
@@ -348,10 +411,29 @@ function ajouterPlayers() {
           divChangement.innerHTML += `
             <div class="">
               <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-                <div class="mt-2 rounded-l p-2 flex items-start justify-around">
-                  <div class="text-sm font-bold">GK</div>
-                  <img src="${dataPlayer[lastIndexGK].photo}" class="rounded-full w-16 h-16" />
+                <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+                  <div class="text-sm font-bold">
+                  <h5>GK</h5>
                   <div class="text-lg font-bold">${dataPlayer[lastIndexGK].rating}</div>
+
+                  </div>
+                  <img src="${dataPlayer[lastIndexGK].photo}" class="rounded-full w-16 h-16" />
+                            <div class="flex gap-2 " >
+      <button
+        type="button"
+        onclick="deletePlayer()"
+        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+              <button
+            type="button"
+            onclick="editePlayers()"
+            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
+
+            <i class="fa-solid fa-pen-to-square text-white" ></i>
+          </button>  
+    </div>
                 </div>
                 <div class="text-center text-sm font-bold mb-2">
                   ${dataPlayer[lastIndexGK].nom}
@@ -578,10 +660,30 @@ function ajouterPlayers() {
   function divPlayerCard(player) {
     return `
         <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-    <div class="mt-2 rounded-l p-2 flex items-start justify-around">
-          <div class="text-sm font-bold">${player.position}</div>
+
+    <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+          <div class="text-sm font-bold">
+          <h5>${player.position}</h5>
+                    <div class="text-lg font-bold">${player.rating}</div>
+
+          </div>
           <img src="${player.photo}" class="rounded-full w-16 h-16" />
-          <div class="text-lg font-bold">${player.rating}</div>
+                <div class="flex gap-2 " >
+      <button
+        type="button"
+        onclick="deletePlayer()"
+        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+              <button
+            type="button"
+            onclick="editePlayers()"
+            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
+
+            <i class="fa-solid fa-pen-to-square text-white" ></i>
+          </button>  
+    </div>
         </div>
         <div class="text-center text-sm font-bold mb-2">
           ${player.nom}
@@ -630,3 +732,29 @@ function ajouterPlayers() {
     `;
   }
 }
+
+// function deletePlayer(indexDelete) {
+
+//   const changementCards = document.getElementById('changement').children;
+  
+
+//   if(changementCards[indexDelete]) {
+//       changementCards[indexDelete].remove();
+//   }
+
+//   dataPlayer.splice(indexDelete, 1);
+
+
+//   const positions = ['player1', 'player2', 'player3', 'player4', 'player5', 
+//                     'player6', 'player7', 'player8', 'player9', 'player10', 'player11'];
+  
+//   positions.forEach(pos => {
+//       const playerDiv = document.querySelector(`.${pos}`);
+//       if(playerDiv && playerDiv.innerHTML.includes(`onclick="deletePlayer(${indexDelete})"`)) {
+//           playerDiv.innerHTML = '';
+//       }
+//   });
+// }
+
+
+
