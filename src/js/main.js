@@ -65,7 +65,7 @@ selectPosition.addEventListener("change", () => {
     inputsDivplayerCm.style.display = "block";
   }
 });
-// form validation 
+
 btnEnter.addEventListener("click", () => {
   let formIsValid = true;
 
@@ -259,7 +259,7 @@ btnEnter.addEventListener("click", () => {
     ajouterPlayers();
   }
 });
-//-- form validation --//
+
 
 function selectDataFromInputs() {
   let PhotosUrl = inputPhoto.files[0];
@@ -324,437 +324,399 @@ function selectDataFromInputs() {
      localStorage.setItem('dataPlayer', JSON.stringify(dataPlayer));
   }
 }
+
+const PLAYER_POSITIONS = {
+  GK: ".player1",
+  LB: ".player2",
+  CB: [".player3", ".player4"],
+  RB: ".player5",
+  CM: [".player6", ".player8"],
+  CDM: ".player7",
+  LW: ".player9",
+  ST: ".player10",
+  RW: ".player11"
+};
+
+
+function resetForm() {
+
+  inputNom.value = "";
+  inputRating.value = "";
+  selectPosition.value = "";
+  
+
+  inputDiving.value = "";
+  inputHandling.value = "";
+  inputKicking.value = "";
+  inputSpeed.value = "";
+  inputPositioning.value = "";
+  
+
+  inputShooting.value = "";
+  inputPace.value = "";
+  inputDribbling.value = "";
+  inputDefending.value = "";
+  inputPhysical.value = "";
+  inputPassing.value = "";
+  
+
+  inputsDivplayerGk.style.display = "none";
+  inputsDivplayerCm.style.display = "none";
+}
+
+
 function ajouterPlayers() {
-  switch (selectPosition.value) {
-    case "GK":
-      if (player1.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "GK") {
-            player1.innerHTML = `
-            
-            <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+
+  const lastPlayer = dataPlayer[dataPlayer.length - 1];
+
+  if (lastPlayer) {
+  
+    function isPlayerInTeam(playerName) {
+      const allTeiranPlayers = document.querySelectorAll('.player1, .player2, .player3, .player4, .player5, .player6, .player7, .player8, .player9, .player10, .player11');
+      
+      for(let i = 0; i < allTeiranPlayers.length; i++) {
+        if(allTeiranPlayers[i].children[0]) {
+          const existingPlayerName = allTeiranPlayers[i].children[0].querySelector('.text-center.text-sm.font-bold').textContent;
+          if(existingPlayerName === playerName) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    const playerInTeam = isPlayerInTeam(lastPlayer.nom);
     
-              <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
-                <div class="text-sm font-bold">
-                <h5>GK</h5>
-                <div class="text-lg font-bold">${dataPlayer[i].rating}</div>
-                </div>
-                <img src="${dataPlayer[i].photo}" class="rounded-full w-16 h-16" />
-      <div class="flex gap-2 " >
-      <button
-        type="button"
-        onclick="deletePlayer()"
-        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-      >
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-              <button
-            type="button"
-            onclick="editePlayers()"
-            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
 
-            <i class="fa-solid fa-pen-to-square text-white" ></i>
-          </button>  
-    </div>
-              </div>
-              <div class="text-center text-sm font-bold mb-2">
-                ${dataPlayer[i].nom}
-              </div>
-              <div class="flex justify-between items-center mb-4">
-                <div class="text-xs">CDM ++</div>
-                <div class="flex space-x-2">
-                  <img src="${dataPlayer[i].flagNationalite}" class="w-5 h-3" />
-                  <img src="${dataPlayer[i].logoClub}" class="w-5 h-5" />
-                </div>
-              </div>
-              <div class="grid grid-cols-6 gap-1 text-center">
-                <div>
-                  <div class="text-xs">DIV</div>
-                  <div class="text-sm font-bold">${dataPlayer[i].diving}</div>
-                </div>
-                <div>
-                  <div class="text-xs">HAN</div>
-                  <div class="text-sm font-bold">${dataPlayer[i].handling}</div>
-                </div>
-                <div>
-                  <div class="text-xs">KIC</div>
-                  <div class="text-sm font-bold">${dataPlayer[i].kicking}</div>
-                </div>
-                <div>
-                  <div class="text-xs">SPD</div>
-                  <div class="text-sm font-bold">${dataPlayer[i].speed}</div>
-                </div>
-                <div>
-                  <div class="text-xs">POS</div>
-                  <div class="text-sm font-bold">${dataPlayer[i].positioning}</div>
-                </div>
-              </div>
-              <div class="flex justify-around items-center mt-4">
-                <div class="text-xs">R!</div>
-                <div class="text-xs">4 W.F</div>
-                <div class="text-xs">3*</div>
-              </div>
+    if (lastPlayer.position === "GK") {
+      divChangement.innerHTML += `
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+          <!-- Card content for goalkeeper -->
+          <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+            <div class="text-sm font-bold">
+              <h5>GK</h5>
+              <div class="text-lg font-bold">${lastPlayer.rating}</div>
             </div>
-            `;
-            break;
-          }
-        }
-      } else if (player1.innerHTML.trim() !== "") {
-        let lastIndexGK = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "GK") {
-            lastIndexGK = i;
-          }
-        }
-
-        if (lastIndexGK !== -1) {
-          divChangement.innerHTML += `
-            <div class="">
-              <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-                <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
-                  <div class="text-sm font-bold">
-                  <h5>GK</h5>
-                  <div class="text-lg font-bold">${dataPlayer[lastIndexGK].rating}</div>
-
-                  </div>
-                  <img src="${dataPlayer[lastIndexGK].photo}" class="rounded-full w-16 h-16" />
-                            <div class="flex gap-2 " >
-      <button
-        type="button"
-        onclick="deletePlayer()"
-        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-      >
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-              <button
-            type="button"
-            onclick="editePlayers()"
-            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
-
-            <i class="fa-solid fa-pen-to-square text-white" ></i>
-          </button>  
-    </div>
-                </div>
-                <div class="text-center text-sm font-bold mb-2">
-                  ${dataPlayer[lastIndexGK].nom}
-                </div>
-                <div class="flex justify-between items-center mb-4">
-                  <div class="text-xs">CDM ++</div>
-                  <div class="flex space-x-2">
-                    <img src="${dataPlayer[lastIndexGK].flagNationalite}" class="w-5 h-3" />
-                    <img src="${dataPlayer[lastIndexGK].logoClub}" class="w-5 h-5" />
-                  </div>
-                </div>
-                <div class="grid grid-cols-6 gap-1 text-center">
-                  <div>
-                    <div class="text-xs">DIV</div>
-                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].diving}</div>
-                  </div>
-                  <div>
-                    <div class="text-xs">HAN</div>
-                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].handling}</div>
-                  </div>
-                  <div>
-                    <div class="text-xs">KIC</div>
-                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].kicking}</div>
-                  </div>
-                  <div>
-                    <div class="text-xs">SPD</div>
-                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].speed}</div>
-                  </div>
-                  <div>
-                    <div class="text-xs">POS</div>
-                    <div class="text-sm font-bold">${dataPlayer[lastIndexGK].positioning}</div>
-                  </div>
-                </div>
-                <div class="flex justify-around items-center mt-4">
-                  <div class="text-xs">R!</div>
-                  <div class="text-xs">4 W.F</div>
-                  <div class="text-xs">3*</div>
-                </div>
-              </div>
+            <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
+            <div class="flex gap-2">
+              <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              ${!playerInTeam ? `
+              <button type="button" onclick="editePlayers(this)" 
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-pen-to-square text-white"></i>
+              </button>
+              ` : ''}
             </div>
-          `;
-        }
-      }
+          </div>
+          <div class="text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-xs">CDM ++</div>
+            <div class="flex space-x-2">
+              <img src="${lastPlayer.flagNationalite}" class="w-5 h-3" />
+              <img src="${lastPlayer.logoClub}" class="w-5 h-5" />
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-1 text-center">
+            <div>
+              <div class="text-xs">DIV</div>
+              <div class="text-sm font-bold">${lastPlayer.diving}</div>
+            </div>
+            <div>
+              <div class="text-xs">HAN</div>
+              <div class="text-sm font-bold">${lastPlayer.handling}</div>
+            </div>
+            <div>
+              <div class="text-xs">KIC</div>
+              <div class="text-sm font-bold">${lastPlayer.kicking}</div>
+            </div>
+            <div>
+              <div class="text-xs">SPD</div>
+              <div class="text-sm font-bold">${lastPlayer.speed}</div>
+            </div>
+            <div>
+              <div class="text-xs">POS</div>
+              <div class="text-sm font-bold">${lastPlayer.positioning}</div>
+            </div>
+          </div>
+          ${!playerInTeam ? `
+          <button type="button" onclick="changerVerTeiran(this.closest('.card'))" 
+            class="w-full mt-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5">
+            Add to Team
+          </button>
+          ` : ''}
+        </div>
+      `;
+    } else {
+  
+      divChangement.innerHTML += `
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+          <!-- Card content for other players -->
+          <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+            <div class="text-sm font-bold">
+              <h5>${lastPlayer.position}</h5>
+              <div class="text-lg font-bold">${lastPlayer.rating}</div>
+            </div>
+            <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
+            <div class="flex gap-2">
+              <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              ${!playerInTeam ? `
+              <button type="button" onclick="editePlayers(this)" 
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-pen-to-square text-white"></i>
+              </button>
+              ` : ''}
+            </div>
+          </div>
+          <div class="text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-xs">CDM ++</div>
+            <div class="flex space-x-2">
+              <img src="${lastPlayer.flagNationalite}" class="w-5 h-3" />
+              <img src="${lastPlayer.logoClub}" class="w-5 h-5" />
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-1 text-center">
+            <div>
+              <div class="text-xs">SHO</div>
+              <div class="text-sm font-bold">${lastPlayer.shooting}</div>
+            </div>
+            <div>
+              <div class="text-xs">PAC</div>
+              <div class="text-sm font-bold">${lastPlayer.pace}</div>
+            </div>
+            <div>
+              <div class="text-xs">DRI</div>
+              <div class="text-sm font-bold">${lastPlayer.dribbling}</div>
+            </div>
+            <div>
+              <div class="text-xs">DEF</div>
+              <div class="text-sm font-bold">${lastPlayer.defending}</div>
+            </div>
+            <div>
+              <div class="text-xs">PHY</div>
+              <div class="text-sm font-bold">${lastPlayer.physical}</div>
+            </div>
+            <div>
+              <div class="text-xs">PAS</div>
+              <div class="text-sm font-bold">${lastPlayer.passing}</div>
+            </div>
+          </div>
+          ${!playerInTeam ? `
+          <button type="button" onclick="changerVerTeiran(this.closest('.card'))" 
+            class="w-full mt-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5">
+            Add to Team
+          </button>
+          ` : ''}
+        </div>
+      `;
+    }
+  }
+
+  resetForm()
+}
+
+
+function changerVerTeiran(card) {
+
+  const position = card.querySelector("h5").textContent;
+  
+
+  let teiranPlace = null;
+  
+  switch(position) {
+    case "GK":
+      teiranPlace = document.querySelector(".player1");
       break;
-
     case "LB":
-      if (player2.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "LB") {
-            player2.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else if (player2.innerHTML.trim() !== "") {
-        let indexLB = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "LB") {
-            indexLB = i;
-          }
-        }
-        if (indexLB !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexLB]);
-        }
-      }
+      teiranPlace = document.querySelector(".player2");
       break;
-
     case "CB":
-      if (player3.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CB") {
-            player3.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else if (player4.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CB") {
-            player4.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else if (player3.innerHTML.trim() !== "") {
-        let indexCB = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CB") {
-            indexCB = i;
-          }
-        }
-        if (indexCB !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCB]);
-        }
+      if(document.querySelector(".player3").innerHTML === "") {
+        teiranPlace = document.querySelector(".player3");
+      } else if(document.querySelector(".player4").innerHTML === "") {
+        teiranPlace = document.querySelector(".player4");
       }
       break;
-
     case "RB":
-      if (player5.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "RB") {
-            player5.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else if (player5.innerHTML.trim() !== "") {
-        let indexRB = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "RB") {
-            indexRB = i;
-          }
-        }
-        if (indexRB !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexRB]);
-        }
-      }
+      teiranPlace = document.querySelector(".player5");
       break;
     case "CM":
-      if (player6.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CM") {
-            player6.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else if (player8.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CM") {
-            player8.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else {
-        let indexCM = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CM") {
-            indexCM = i;
-          }
-        }
-        if (indexCM !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCM]);
-        }
+      if(document.querySelector(".player6").innerHTML === "") {
+        teiranPlace = document.querySelector(".player6");
+      } else if(document.querySelector(".player8").innerHTML === "") {
+        teiranPlace = document.querySelector(".player8");
       }
       break;
     case "CDM":
-      if (player7.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CDM") {
-            player7.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else {
-        let indexCMD = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "CDM") {
-            indexCMD = i;
-          }
-        }
-        if (indexCMD !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexCMD]);
-        }
-      }
+      teiranPlace = document.querySelector(".player7");
       break;
     case "LW":
-      if (player9.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "LW") {
-            player9.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else {
-        let indexLW = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "LW") {
-            indexLW = i;
-          }
-        }
-        if (indexLW !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexLW]);
-        }
-      }
+      teiranPlace = document.querySelector(".player9");
       break;
     case "ST":
-      if (player10.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "ST") {
-            player10.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else {
-        let indexST = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "ST") {
-            indexST = i;
-          }
-        }
-        if (indexST !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexST]);
-        }
-      }
+      teiranPlace = document.querySelector(".player10");
       break;
     case "RW":
-      if (player11.innerHTML.trim() === "") {
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "RW") {
-            player11.innerHTML = divPlayerCard(dataPlayer[i]);
-            break;
-          }
-        }
-      } else {
-        let indexRW = -1;
-        for (let i = 0; i < dataPlayer.length; i++) {
-          if (dataPlayer[i].position === "RW") {
-            indexRW = i;
-          }
-        }
-        if (indexRW !== -1) {
-          divChangement.innerHTML += divPlayerCard(dataPlayer[indexRW]);
-        }
-      }
+      teiranPlace = document.querySelector(".player11");
       break;
   }
 
-  function divPlayerCard(player) {
-    return `
-        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+  if(teiranPlace && teiranPlace.innerHTML === "") {
 
-    <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+    const teamPlayerHTML = `
+      <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+        <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
           <div class="text-sm font-bold">
-          <h5>${player.position}</h5>
-                    <div class="text-lg font-bold">${player.rating}</div>
-
+            <h5>${card.querySelector("h5").textContent}</h5>
+            <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").textContent}</div>
           </div>
-          <img src="${player.photo}" class="rounded-full w-16 h-16" />
-                <div class="flex gap-2 " >
-      <button
-        type="button"
-        onclick="deletePlayer()"
-        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-      >
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-              <button
-            type="button"
-            onclick="editePlayers()"
-            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1 "  >
-
-            <i class="fa-solid fa-pen-to-square text-white" ></i>
-          </button>  
-    </div>
+          <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
+          <div class="flex gap-2">
+            <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
         </div>
-        <div class="text-center text-sm font-bold mb-2">
-          ${player.nom}
-        </div>
+        <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").textContent}</div>
         <div class="flex justify-between items-center mb-4">
           <div class="text-xs">CDM ++</div>
           <div class="flex space-x-2">
-            <img src="${player.flagNationalite}" class="w-5 h-3" />
-            <img src="${player.logoClub}" class="w-5 h-5" />
+            <img src="${card.querySelector(".flex.space-x-2 img:first-child").src}" class="w-5 h-3" />
+            <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="w-5 h-5" />
           </div>
         </div>
         <div class="grid grid-cols-6 gap-1 text-center">
-        
-        
-          <div>
-            <div class="text-xs">SHO</div>
-            <div class="text-sm font-bold">${player.shooting}</div>
-          </div>
-          <div>
-            <div class="text-xs">PAC</div>
-            <div class="text-sm font-bold">${player.pace}</div>
-          </div>
-          <div>
-            <div class="text-xs">DRI</div>
-            <div class="text-sm font-bold">${player.dribbling}</div>
-          </div>
-          <div>
-            <div class="text-xs">DEF</div>
-            <div class="text-sm font-bold">${player.defending}</div>
-          </div>
-          <div>
-            <div class="text-xs">PHY</div>
-            <div class="text-sm font-bold">${player.physical}</div>
-          </div>
-          <div>
-            <div class="text-xs">PAS</div>
-            <div class="text-sm font-bold">${player.passing}</div>
-          </div>
-        </div>
-        <div class="flex justify-around items-center mt-4">
-          <div class="text-xs">R!</div>
-          <div class="text-xs">4 W.F</div>
-          <div class="text-xs">3*</div>
+          ${card.querySelector(".grid.grid-cols-6").innerHTML}
         </div>
       </div>
     `;
+
+    teiranPlace.innerHTML = teamPlayerHTML;
+    card.remove();
+  } else {
+    alert("Cette position est déjà occupée!");
   }
 }
 
-// function deletePlayer(indexDelete) {
+function deletePlayer(button) {
 
-//   const changementCards = document.getElementById('changement').children;
+  const card = button.closest('.card');
   
+  if(card) {
 
-//   if(changementCards[indexDelete]) {
-//       changementCards[indexDelete].remove();
-//   }
+    const isInBoard = card.parentElement.classList.contains('player1') ||
+                     card.parentElement.classList.contains('player2') ||
+                     card.parentElement.classList.contains('player3') ||
+                     card.parentElement.classList.contains('player4') ||
+                     card.parentElement.classList.contains('player5') ||
+                     card.parentElement.classList.contains('player6') ||
+                     card.parentElement.classList.contains('player7') ||
+                     card.parentElement.classList.contains('player8') ||
+                     card.parentElement.classList.contains('player9') ||
+                     card.parentElement.classList.contains('player10') ||
+                     card.parentElement.classList.contains('player11');
+    
+    if(isInBoard) {
 
-//   dataPlayer.splice(indexDelete, 1);
+      const playerHTML = `
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+          <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
+            <div class="text-sm font-bold">
+              <h5>${card.querySelector("h5").textContent}</h5>
+              <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").textContent}</div>
+            </div>
+            <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
+            <div class="flex gap-2">
+              <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <button type="button" onclick="editePlayers(this)" 
+                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
+                <i class="fa-solid fa-pen-to-square text-white"></i>
+              </button>
+            </div>
+          </div>
+          <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").textContent}</div>
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-xs">CDM ++</div>
+            <div class="flex space-x-2">
+              <img src="${card.querySelector(".flex.space-x-2 img:first-child").src}" class="w-5 h-3" />
+              <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="w-5 h-5" />
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-1 text-center">
+            ${card.querySelector(".grid.grid-cols-6").innerHTML}
+          </div>
+          <button type="button" onclick="changerVerTeiran(this.closest('.card'))" 
+            class="w-full mt-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5">
+            Add to Team
+          </button>
+        </div>
+      `;
+      
+      divChangement.innerHTML += playerHTML;
+      
+      card.parentElement.innerHTML = '';
+    } else {
+      card.remove();
+    }
+  }
+}
 
 
-//   const positions = ['player1', 'player2', 'player3', 'player4', 'player5', 
-//                     'player6', 'player7', 'player8', 'player9', 'player10', 'player11'];
+function editePlayers(button) {
+  const card = button.closest('.card');
   
-//   positions.forEach(pos => {
-//       const playerDiv = document.querySelector(`.${pos}`);
-//       if(playerDiv && playerDiv.innerHTML.includes(`onclick="deletePlayer(${indexDelete})"`)) {
-//           playerDiv.innerHTML = '';
-//       }
-//   });
-// }
-
-
-
+  const position = card.querySelector("h5").textContent;
+  const nom = card.querySelector(".text-center.text-sm.font-bold").textContent;
+  const rating = card.querySelector(".text-lg.font-bold").textContent;
+  
+  selectPosition.value = position;
+  inputNom.value = nom;
+  inputRating.value = rating;
+  
+  if (position === "GK") {
+    inputsDivplayerGk.style.display = "block";
+    inputsDivplayerCm.style.display = "none";
+    
+    inputDiving.value = card.querySelector(".grid.grid-cols-6 div:nth-child(1) .text-sm.font-bold").textContent;
+    inputHandling.value = card.querySelector(".grid.grid-cols-6 div:nth-child(2) .text-sm.font-bold").textContent;
+    inputKicking.value = card.querySelector(".grid.grid-cols-6 div:nth-child(3) .text-sm.font-bold").textContent;
+    inputSpeed.value = card.querySelector(".grid.grid-cols-6 div:nth-child(4) .text-sm.font-bold").textContent;
+    inputPositioning.value = card.querySelector(".grid.grid-cols-6 div:nth-child(5) .text-sm.font-bold").textContent;
+  } else {
+    inputsDivplayerGk.style.display = "none";
+    inputsDivplayerCm.style.display = "block";
+    
+    inputShooting.value = card.querySelector(".grid.grid-cols-6 div:nth-child(1) .text-sm.font-bold").textContent;
+    inputPace.value = card.querySelector(".grid.grid-cols-6 div:nth-child(2) .text-sm.font-bold").textContent;
+    inputDribbling.value = card.querySelector(".grid.grid-cols-6 div:nth-child(3) .text-sm.font-bold").textContent;
+    inputDefending.value = card.querySelector(".grid.grid-cols-6 div:nth-child(4) .text-sm.font-bold").textContent;
+    inputPhysical.value = card.querySelector(".grid.grid-cols-6 div:nth-child(5) .text-sm.font-bold").textContent;
+    inputPassing.value = card.querySelector(".grid.grid-cols-6 div:nth-child(6) .text-sm.font-bold").textContent;
+  }
+  
+  card.remove();
+  
+  btnEnter.onclick = function() {
+    if (validateForm()) {
+      selectDataFromInputs();
+      ajouterPlayers();
+      
+    
+      resetForm();
+      
+  
+      btnEnter.onclick = function() {
+        if (validateForm()) {
+          selectDataFromInputs();
+          ajouterPlayers();
+        }
+      };
+    }
+  };
+}
