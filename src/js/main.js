@@ -7,7 +7,7 @@ let inputLogoClub = document.querySelector(".input-logo-club");
 let inputRating = document.querySelector(".input-rating");
 
 let inputShooting = document.querySelector(".input-shooting");
-
+let plan = document.querySelector('.select-plan')
 let inputDribbling = document.querySelector(".input-dribbling");
 let inputDefending = document.querySelector(".input-defending");
 let inputPhysical = document.querySelector(".input-physical");
@@ -706,5 +706,54 @@ function editePlayers(button) {
     }
   };
 }
+plan.addEventListener('change',()=>{
 
 
+  if (plan.value==='premier') {
+    player1.classList.add('plan1')
+    player1.classList.remove('plan-2-1')
+    player2.classList.add('plan2')
+    player2.classList.remove('plan-2-2')
+    player3.classList.add('plan3')
+    player3.classList.remove('plan-2-3')
+    player4.classList.add('plan4')
+    player4.classList.remove('plan-2-4')
+    player5.classList.add('plan5')
+    player5.classList.remove('plan-2-5')
+    player6.classList.add('plan6')
+    player6.classList.remove('plan-2-6')
+    player7.classList.add('plan7')
+    player7.classList.remove('plan-2-7')
+    player8.classList.add('plan8')
+    player8.classList.remove('plan-2-8')
+    player9.classList.add('plan9')
+    player9.classList.remove('plan-2-9')
+    player10.classList.add('plan10')
+    player10.classList.remove('plan-2-10')
+    player11.classList.add('plan11')
+    player11.classList.remove('plan-2-11')
+  }else{
+    player1.classList.add('plan-2-1')
+    player1.classList.remove('plan1')
+    player2.classList.add('plan-2-2')
+    player2.classList.remove('plan2')
+    player3.classList.add('plan-2-3')
+    player3.classList.remove('plan3')
+    player4.classList.add('plan-2-4')
+    player4.classList.remove('plan4')
+    player5.classList.add('plan-2-5')
+    player5.classList.remove('plan5')
+    player6.classList.add('plan-2-6')
+    player6.classList.remove('plan6')
+    player7.classList.add('plan-2-7')
+    player7.classList.remove('plan7')
+    player8.classList.add('plan-2-8')
+    player8.classList.remove('plan8')
+    player9.classList.add('plan-2-9')
+    player9.classList.remove('plan9')
+    player10.classList.add('plan-2-10')
+    player10.classList.remove('plan10')
+    player11.classList.add('plan-2-11')
+    player11.classList.remove('plan11')
+  }
+})
