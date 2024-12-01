@@ -67,7 +67,57 @@ selectPosition.addEventListener("change", () => {
     inputsDivplayerCm.style.display = "block";
   }
 });
+plan.addEventListener('change',()=>{
 
+
+  if (plan.value==='premier') {
+    player1.classList.add('plan1')
+    player1.classList.remove('plan-2-1')
+    player2.classList.add('plan2')
+    player2.classList.remove('plan-2-2')
+    player3.classList.add('plan3')
+    player3.classList.remove('plan-2-3')
+    player4.classList.add('plan4')
+    player4.classList.remove('plan-2-4')
+    player5.classList.add('plan5')
+    player5.classList.remove('plan-2-5')
+    player6.classList.add('plan6')
+    player6.classList.remove('plan-2-6')
+    player7.classList.add('plan7')
+    player7.classList.remove('plan-2-7')
+    player8.classList.add('plan8')
+    player8.classList.remove('plan-2-8')
+    player9.classList.add('plan9')
+    player9.classList.remove('plan-2-9')
+    player10.classList.add('plan10')
+    player10.classList.remove('plan-2-10')
+    player11.classList.add('plan11')
+    player11.classList.remove('plan-2-11')
+  }else{
+    player1.classList.add('plan-2-1')
+    player1.classList.remove('plan1')
+    player2.classList.add('plan-2-2')
+    player2.classList.remove('plan2')
+    player3.classList.add('plan-2-3')
+    player3.classList.remove('plan3')
+    player4.classList.add('plan-2-4')
+    player4.classList.remove('plan4')
+    player5.classList.add('plan-2-5')
+    player5.classList.remove('plan5')
+    player6.classList.add('plan-2-6')
+    player6.classList.remove('plan6')
+    player7.classList.add('plan-2-7')
+    player7.classList.remove('plan7')
+    player8.classList.add('plan-2-8')
+    player8.classList.remove('plan8')
+    player9.classList.add('plan-2-9')
+    player9.classList.remove('plan9')
+    player10.classList.add('plan-2-10')
+    player10.classList.remove('plan10')
+    player11.classList.add('plan-2-11')
+    player11.classList.remove('plan11')
+  }
+})
 btnEnter.addEventListener("click", () => {
   let formIsValid = true;
 
@@ -594,66 +644,7 @@ function changerVerTeiran(card) {
 function deletePlayer(button) {
 
   const card = button.closest('.card');
-  
-  if(card) {
-
-    const isInBoard = card.parentElement.classList.contains('player1') ||
-                     card.parentElement.classList.contains('player2') ||
-                     card.parentElement.classList.contains('player3') ||
-                     card.parentElement.classList.contains('player4') ||
-                     card.parentElement.classList.contains('player5') ||
-                     card.parentElement.classList.contains('player6') ||
-                     card.parentElement.classList.contains('player7') ||
-                     card.parentElement.classList.contains('player8') ||
-                     card.parentElement.classList.contains('player9') ||
-                     card.parentElement.classList.contains('player10') ||
-                     card.parentElement.classList.contains('player11');
-    
-    if(isInBoard) {
-
-      let playerHTML = `
-        <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
-          <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
-            <div class="text-sm font-bold">
-              <h5 class="">${card.querySelector("h5").innerHTML}</h5>
-              <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").innerHTML}</div>
-            </div>
-            <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
-            <div class="flex gap-2">
-              <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-              <button type="button" onclick="editePlayers(this)" 
-                class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br text-center focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
-                <i class="fa-solid fa-pen-to-square text-white"></i>
-              </button>
-            </div>
-          </div>
-          <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").innerHTML}</div>
-          <div class="flex justify-between items-center mb-4">
-            <div class="text-xs">CDM ++</div>
-            <div class="flex space-x-2">
-              <img src="${card.querySelector(".flex.space-x-2 img:first-child").src}" class="w-5 h-3" />
-              <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="w-5 h-5" />
-            </div>
-          </div>
-          <div class="grid grid-cols-6 player-infos gap-1 text-center">
-            ${card.querySelector(".player-infos").innerHTML}
-          </div>
-          <button type="button" onclick="changerVerTeiran(this.closest('.card'))" 
-            class="w-full mt-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5">
-            Add to Team
-          </button>
-        </div>
-      `;
-      
-      divChangement.innerHTML += playerHTML;
-      
-      card.parentElement.innerHTML = '';
-    } else {
-      card.remove();
-    }
-  }
+      card.parentElement.innerHTML=''
 }
 
 
@@ -706,54 +697,4 @@ function editePlayers(button) {
     }
   };
 }
-plan.addEventListener('change',()=>{
 
-
-  if (plan.value==='premier') {
-    player1.classList.add('plan1')
-    player1.classList.remove('plan-2-1')
-    player2.classList.add('plan2')
-    player2.classList.remove('plan-2-2')
-    player3.classList.add('plan3')
-    player3.classList.remove('plan-2-3')
-    player4.classList.add('plan4')
-    player4.classList.remove('plan-2-4')
-    player5.classList.add('plan5')
-    player5.classList.remove('plan-2-5')
-    player6.classList.add('plan6')
-    player6.classList.remove('plan-2-6')
-    player7.classList.add('plan7')
-    player7.classList.remove('plan-2-7')
-    player8.classList.add('plan8')
-    player8.classList.remove('plan-2-8')
-    player9.classList.add('plan9')
-    player9.classList.remove('plan-2-9')
-    player10.classList.add('plan10')
-    player10.classList.remove('plan-2-10')
-    player11.classList.add('plan11')
-    player11.classList.remove('plan-2-11')
-  }else{
-    player1.classList.add('plan-2-1')
-    player1.classList.remove('plan1')
-    player2.classList.add('plan-2-2')
-    player2.classList.remove('plan2')
-    player3.classList.add('plan-2-3')
-    player3.classList.remove('plan3')
-    player4.classList.add('plan-2-4')
-    player4.classList.remove('plan4')
-    player5.classList.add('plan-2-5')
-    player5.classList.remove('plan5')
-    player6.classList.add('plan-2-6')
-    player6.classList.remove('plan6')
-    player7.classList.add('plan-2-7')
-    player7.classList.remove('plan7')
-    player8.classList.add('plan-2-8')
-    player8.classList.remove('plan8')
-    player9.classList.add('plan-2-9')
-    player9.classList.remove('plan9')
-    player10.classList.add('plan-2-10')
-    player10.classList.remove('plan10')
-    player11.classList.add('plan-2-11')
-    player11.classList.remove('plan11')
-  }
-})
