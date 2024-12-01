@@ -107,3 +107,26 @@
   align-items: center;
   justify-content: center;
 }
+.otton-display-formall{
+  display: none;
+}
+
+@media (max-width: 1700px) {
+  .stad{
+    width: 100%;
+  } 
+  .containerr{
+    display: flex;
+    flex-direction: column;
+  }
+.formall{
+position: static;
+margin-bottom: 50px;
+
+}
+.title{
+  left: 30%;
+}
+
+
+}

@@ -54,8 +54,10 @@ let player8 = document.querySelector(".player8");
 let player9 = document.querySelector(".player9");
 let player10 = document.querySelector(".player10");
 let player11 = document.querySelector(".player11");
-let dataPlayer =  JSON.parse(localStorage.getItem('dataPlayer')) || [];
-
+if(localStorage.DataPlayers !=null){
+  dataPlayer =JSON.parse(localStorage.DataPlayers)
+  }else{
+    dataPlayer = []}
 selectPosition.addEventListener("change", () => {
   if (selectPosition.value === "GK") {
     inputsDivplayerGk.style.display = "block";
@@ -291,8 +293,8 @@ function selectDataFromInputs() {
       positioning: inputPositioning.value,
     };
     dataPlayer.push(myObject);
-     localStorage.setItem('dataPlayer', JSON.stringify(dataPlayer));
-
+  
+    //  localStorage.setItem('DataPlayers', JSON.stringify(dataPlayer))
   } else if (
     selectPosition.value === "CM" ||
     selectPosition.value === "CB" ||
@@ -321,22 +323,9 @@ function selectDataFromInputs() {
       passing: inputPassing.value,
     };
     dataPlayer.push(myObject);
-     localStorage.setItem('dataPlayer', JSON.stringify(dataPlayer));
+    // localStorage.setItem('DataPlayers', JSON.stringify(dataPlayer))
   }
 }
-
-const PLAYER_POSITIONS = {
-  GK: ".player1",
-  LB: ".player2",
-  CB: [".player3", ".player4"],
-  RB: ".player5",
-  CM: [".player6", ".player8"],
-  CDM: ".player7",
-  LW: ".player9",
-  ST: ".player10",
-  RW: ".player11"
-};
-
 
 function resetForm() {
 
@@ -390,15 +379,15 @@ function ajouterPlayers() {
 
     if (lastPlayer.position === "GK") {
       divChangement.innerHTML += `
-        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
-          <!-- Card content for goalkeeper -->
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
+        
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
               <h5>GK</h5>
               <div class="text-lg font-bold">${lastPlayer.rating}</div>
             </div>
             <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
-            <div class="flex gap-2">
+            <div class="flex gap-2 flex-col">
               <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -451,7 +440,7 @@ function ajouterPlayers() {
     } else {
   
       divChangement.innerHTML += `
-        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
           <!-- Card content for other players -->
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
@@ -459,7 +448,7 @@ function ajouterPlayers() {
               <div class="text-lg font-bold">${lastPlayer.rating}</div>
             </div>
             <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
-            <div class="flex gap-2">
+            <div class="flex gap-2 flex-col">
               <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -523,7 +512,6 @@ function ajouterPlayers() {
 function changerVerTeiran(card) {
 
   const position = card.querySelector("h5").textContent;
-  
 
   let teiranPlace = null;
   
@@ -567,15 +555,15 @@ function changerVerTeiran(card) {
 
   if(teiranPlace && teiranPlace.innerHTML === "") {
 
-    const teamPlayerHTML = `
-      <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+    let teamPlayerHTML = `
+      <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
         <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
           <div class="text-sm font-bold">
             <h5>${card.querySelector("h5").textContent}</h5>
             <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").textContent}</div>
           </div>
           <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
-          <div class="flex gap-2">
+          <div class="flex gap-2 flex-col">
             <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
               <i class="fa-solid fa-xmark"></i>
             </button>
@@ -622,8 +610,8 @@ function deletePlayer(button) {
     
     if(isInBoard) {
 
-      const playerHTML = `
-        <div class="card rounded-l shadow-l p-4 max-w-[170px] text-white">
+      let playerHTML = `
+        <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
               <h5>${card.querySelector("h5").textContent}</h5>
@@ -720,3 +708,5 @@ function editePlayers(button) {
     }
   };
 }
+
+
