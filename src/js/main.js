@@ -146,112 +146,112 @@ btnEnter.addEventListener("click", () => {
   }
   if (selectPosition.value === "GK") {
     if (inputDiving.value === "" || inputDiving.value < 0 || inputDiving.value > 99) {
-      document.querySelector(".error-diving").textContent = "La plongeon doit être entre 0 et 99";
+      document.querySelector(".error-diving").innerHTML = "La plongeon doit être entre 0 et 99";
       inputDiving.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-diving").textContent = "";
+      document.querySelector(".error-diving").innerHTML = "";
       inputDiving.style.borderColor = "green";
     }
 
     if (inputHandling.value === "" || inputHandling.value < 0 || inputHandling.value > 99) {
-      document.querySelector(".error-handling").textContent = "La prise de balle doit être entre 0 et 99";
+      document.querySelector(".error-handling").innerHTML = "La prise de balle doit être entre 0 et 99";
       inputHandling.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-handling").textContent = "";
+      document.querySelector(".error-handling").innerHTML = "";
       inputHandling.style.borderColor = "green";
     }
 
     if (inputKicking.value === "" || inputKicking.value < 0 || inputKicking.value > 99) {
-      document.querySelector(".error-kicking").textContent = "Les coups de pied doivent être entre 0 et 99";
+      document.querySelector(".error-kicking").innerHTML = "Les coups de pied doivent être entre 0 et 99";
       inputKicking.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-kicking").textContent = "";
+      document.querySelector(".error-kicking").innerHTML = "";
       inputKicking.style.borderColor = "green";
     }
 
     if (inputReflexes.value === "" || inputReflexes.value < 0 || inputReflexes.value > 99) {
-      document.querySelector(".error-reflexes").textContent = "Les réflexes doivent être entre 0 et 99";
+      document.querySelector(".error-reflexes").innerHTML = "Les réflexes doivent être entre 0 et 99";
       inputReflexes.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-reflexes").textContent = "";
+      document.querySelector(".error-reflexes").innerHTML = "";
       inputReflexes.style.borderColor = "green";
     }
 
     if (inputSpeed.value === "" || inputSpeed.value < 0 || inputSpeed.value > 99) {
-      document.querySelector(".error-speed").textContent = "La vitesse doit être entre 0 et 99";
+      document.querySelector(".error-speed").innerHTML = "La vitesse doit être entre 0 et 99";
       inputSpeed.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-speed").textContent = "";
+      document.querySelector(".error-speed").innerHTML = "";
       inputSpeed.style.borderColor = "green";
     }
 
     if (inputPositioning.value === "" || inputPositioning.value < 0 || inputPositioning.value > 99) {
-      document.querySelector(".error-positioning").textContent = "Le positionnement doit être entre 0 et 99";
+      document.querySelector(".error-positioning").innerHTML = "Le positionnement doit être entre 0 et 99";
       inputPositioning.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-positioning").textContent = "";
+      document.querySelector(".error-positioning").innerHTML = "";
       inputPositioning.style.borderColor = "green";
     }
   }
 
   if (selectPosition.value !== "GK" && selectPosition.value !== "Choisi votre position") {
     if (inputShooting.value === "" || inputShooting.value < 0 || inputShooting.value > 99) {
-      document.querySelector(".error-shooting").textContent = "Le tir doit être entre 0 et 99";
+      document.querySelector(".error-shooting").innerHTML = "Le tir doit être entre 0 et 99";
       inputShooting.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-shooting").textContent = "";
+      document.querySelector(".error-shooting").innerHTML = "";
       inputShooting.style.borderColor = "green";
     }
 
     if (inputPace.value === "" || inputPace.value < 0 || inputPace.value > 99) {
-      document.querySelector(".error-pace").textContent = "La vitesse doit être entre 0 et 99";
+      document.querySelector(".error-pace").innerHTML = "La vitesse doit être entre 0 et 99";
       inputPace.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-pace").textContent = "";
+      document.querySelector(".error-pace").innerHTML = "";
       inputPace.style.borderColor = "green";
     }
 
     if (inputDribbling.value === "" || inputDribbling.value < 0 || inputDribbling.value > 99) {
-      document.querySelector(".error-dribbling").textContent = "Le dribble doit être entre 0 et 99";
+      document.querySelector(".error-dribbling").innerHTML = "Le dribble doit être entre 0 et 99";
       inputDribbling.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-dribbling").textContent = "";
+      document.querySelector(".error-dribbling").innerHTML = "";
       inputDribbling.style.borderColor = "green";
     }
 
     if (inputDefending.value === "" || inputDefending.value < 0 || inputDefending.value > 99) {
-      document.querySelector(".error-defending").textContent = "La défense doit être entre 0 et 99";
+      document.querySelector(".error-defending").innerHTML = "La défense doit être entre 0 et 99";
       inputDefending.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-defending").textContent = "";
+      document.querySelector(".error-defending").innerHTML = "";
       inputDefending.style.borderColor = "green";
     }
 
     if (inputPhysical.value === "" || inputPhysical.value < 0 || inputPhysical.value > 99) {
-      document.querySelector(".error-physical").textContent = "Le physique doit être entre 0 et 99";
+      document.querySelector(".error-physical").innerHTML = "Le physique doit être entre 0 et 99";
       inputPhysical.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-physical").textContent = "";
+      document.querySelector(".error-physical").innerHTML = "";
       inputPhysical.style.borderColor = "green";
     }
 
     if (inputPassing.value === "" || inputPassing.value < 0 || inputPassing.value > 99) {
-      document.querySelector(".error-passing").textContent = "La passe doit être entre 0 et 99";
+      document.querySelector(".error-passing").innerHTML = "La passe doit être entre 0 et 99";
       inputPassing.style.borderColor = "red";
       formIsValid = false;
     } else {
-      document.querySelector(".error-passing").textContent = "";
+      document.querySelector(".error-passing").innerHTML = "";
       inputPassing.style.borderColor = "green";
     }
   }
@@ -365,7 +365,7 @@ function ajouterPlayers() {
       
       for(let i = 0; i < allTeiranPlayers.length; i++) {
         if(allTeiranPlayers[i].children[0]) {
-          const existingPlayerName = allTeiranPlayers[i].children[0].querySelector('.text-center.text-sm.font-bold').textContent;
+          const existingPlayerName = allTeiranPlayers[i].children[0].querySelector('.text-center.text-sm.font-bold').innerHTML;
           if(existingPlayerName === playerName) {
             return true;
           }
@@ -384,7 +384,7 @@ function ajouterPlayers() {
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
               <h5>GK</h5>
-              <div class="text-lg font-bold">${lastPlayer.rating}</div>
+              <div class="rating text-lg font-bold">${lastPlayer.rating}</div>
             </div>
             <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
             <div class="flex gap-2 flex-col">
@@ -399,18 +399,18 @@ function ajouterPlayers() {
               ` : ''}
             </div>
           </div>
-          <div class="text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
+          <div class="nom text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
           <div class="flex justify-between items-center mb-4">
             <div class="text-xs">CDM ++</div>
             <div class="flex space-x-2">
-              <img src="${lastPlayer.flagNationalite}" class="w-5 h-3" />
-              <img src="${lastPlayer.logoClub}" class="w-5 h-5" />
+              <img src="${lastPlayer.flagNationalite}" class="flagNatinalite w-5 h-3" />
+              <img src="${lastPlayer.logoClub}" class="logoClub w-5 h-5" />
             </div>
           </div>
-          <div class="grid grid-cols-6 gap-1 text-center">
+          <div class="grid grid-cols-6 player-infos gap-1 text-center">
             <div>
               <div class="text-xs">DIV</div>
-              <div class="text-sm font-bold">${lastPlayer.diving}</div>
+              <div class="diving text-sm font-bold">${lastPlayer.diving}</div>
             </div>
             <div>
               <div class="text-xs">HAN</div>
@@ -418,15 +418,15 @@ function ajouterPlayers() {
             </div>
             <div>
               <div class="text-xs">KIC</div>
-              <div class="text-sm font-bold">${lastPlayer.kicking}</div>
+              <div class=" kicking text-sm font-bold">${lastPlayer.kicking}</div>
             </div>
             <div>
               <div class="text-xs">SPD</div>
-              <div class="text-sm font-bold">${lastPlayer.speed}</div>
+              <div class="speed text-sm font-bold">${lastPlayer.speed}</div>
             </div>
             <div>
               <div class="text-xs">POS</div>
-              <div class="text-sm font-bold">${lastPlayer.positioning}</div>
+              <div class="positioning text-sm font-bold">${lastPlayer.positioning}</div>
             </div>
           </div>
           ${!playerInTeam ? `
@@ -444,10 +444,10 @@ function ajouterPlayers() {
           <!-- Card content for other players -->
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
-              <h5>${lastPlayer.position}</h5>
-              <div class="text-lg font-bold">${lastPlayer.rating}</div>
+              <h5 class='position' >${lastPlayer.position}</h5>
+              <div class="rating text-lg font-bold">${lastPlayer.rating}</div>
             </div>
-            <img src="${lastPlayer.photo}" class="rounded-full w-16 h-16" />
+            <img src="${lastPlayer.photo}" class="photo rounded-full w-16 h-16" />
             <div class="flex gap-2 flex-col">
               <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
                 <i class="fa-solid fa-xmark"></i>
@@ -460,38 +460,38 @@ function ajouterPlayers() {
               ` : ''}
             </div>
           </div>
-          <div class="text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
+          <div class="nom text-center text-sm font-bold mb-2">${lastPlayer.nom}</div>
           <div class="flex justify-between items-center mb-4">
             <div class="text-xs">CDM ++</div>
             <div class="flex space-x-2">
-              <img src="${lastPlayer.flagNationalite}" class="w-5 h-3" />
-              <img src="${lastPlayer.logoClub}" class="w-5 h-5" />
+              <img src="${lastPlayer.flagNationalite}" class="flagNationalite w-5 h-3" />
+              <img src="${lastPlayer.logoClub}" class="logoClub w-5 h-5" />
             </div>
           </div>
-          <div class="grid grid-cols-6 gap-1 text-center">
+          <div class="grid grid-cols-6 player-infos gap-1 text-center">
             <div>
               <div class="text-xs">SHO</div>
-              <div class="text-sm font-bold">${lastPlayer.shooting}</div>
+              <div class="shooting text-sm font-bold">${lastPlayer.shooting}</div>
             </div>
             <div>
               <div class="text-xs">PAC</div>
-              <div class="text-sm font-bold">${lastPlayer.pace}</div>
+              <div class="pace text-sm font-bold">${lastPlayer.pace}</div>
             </div>
             <div>
               <div class="text-xs">DRI</div>
-              <div class="text-sm font-bold">${lastPlayer.dribbling}</div>
+              <div class="dribbling text-sm font-bold">${lastPlayer.dribbling}</div>
             </div>
             <div>
               <div class="text-xs">DEF</div>
-              <div class="text-sm font-bold">${lastPlayer.defending}</div>
+              <div class="defending text-sm font-bold">${lastPlayer.defending}</div>
             </div>
             <div>
               <div class="text-xs">PHY</div>
-              <div class="text-sm font-bold">${lastPlayer.physical}</div>
+              <div class="physical text-sm font-bold">${lastPlayer.physical}</div>
             </div>
             <div>
               <div class="text-xs">PAS</div>
-              <div class="text-sm font-bold">${lastPlayer.passing}</div>
+              <div class="passing text-sm font-bold">${lastPlayer.passing}</div>
             </div>
           </div>
           ${!playerInTeam ? `
@@ -511,7 +511,7 @@ function ajouterPlayers() {
 
 function changerVerTeiran(card) {
 
-  const position = card.querySelector("h5").textContent;
+  const position = card.querySelector("h5").innerHTML;
 
   let teiranPlace = null;
   
@@ -559,28 +559,29 @@ function changerVerTeiran(card) {
       <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
         <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
           <div class="text-sm font-bold">
-            <h5>${card.querySelector("h5").textContent}</h5>
-            <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").textContent}</div>
+            <h5 class='position' >${card.querySelector("h5").innerHTML}</h5>
+            <div class="rating text-lg font-bold">${card.querySelector(".text-lg.font-bold").innerHTML}</div>
           </div>
-          <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
+          <img src="${card.querySelector("img").src}" class="photo rounded-full w-16 h-16" />
           <div class="flex gap-2 flex-col">
             <button type="button" onclick="deletePlayer(this)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 me-1 mb-1">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
         </div>
-        <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").textContent}</div>
+        <div class="nom text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").innerHTML}</div>
         <div class="flex justify-between items-center mb-4">
           <div class="text-xs">CDM ++</div>
           <div class="flex space-x-2">
-            <img src="${card.querySelector(".flex.space-x-2 img:first-child").src}" class="w-5 h-3" />
-            <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="w-5 h-5" />
+            <img src="${card.querySelector(".flex.space-x-2 img:first-child").src}" class="flagNationalite w-5 h-3" />
+            <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="logoClub w-5 h-5" />
           </div>
         </div>
-        <div class="grid grid-cols-6 gap-1 text-center">
-          ${card.querySelector(".grid.grid-cols-6").innerHTML}
+        <div class="shooting grid grid-cols-6 player-infos gap-1 text-center">
+          ${card.querySelector(".player-infos").innerHTML}
         </div>
       </div>
+
     `;
 
     teiranPlace.innerHTML = teamPlayerHTML;
@@ -614,8 +615,8 @@ function deletePlayer(button) {
         <div class="card rounded-l shadow-l p-4 max-w-[170px] h-[250px] text-white">
           <div class="mt-2 rounded-l p-2 flex items-start justify-between gap-3">
             <div class="text-sm font-bold">
-              <h5>${card.querySelector("h5").textContent}</h5>
-              <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").textContent}</div>
+              <h5 class="">${card.querySelector("h5").innerHTML}</h5>
+              <div class="text-lg font-bold">${card.querySelector(".text-lg.font-bold").innerHTML}</div>
             </div>
             <img src="${card.querySelector("img").src}" class="rounded-full w-16 h-16" />
             <div class="flex gap-2">
@@ -628,7 +629,7 @@ function deletePlayer(button) {
               </button>
             </div>
           </div>
-          <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").textContent}</div>
+          <div class="text-center text-sm font-bold mb-2">${card.querySelector(".text-center.text-sm.font-bold").innerHTML}</div>
           <div class="flex justify-between items-center mb-4">
             <div class="text-xs">CDM ++</div>
             <div class="flex space-x-2">
@@ -636,8 +637,8 @@ function deletePlayer(button) {
               <img src="${card.querySelector(".flex.space-x-2 img:last-child").src}" class="w-5 h-5" />
             </div>
           </div>
-          <div class="grid grid-cols-6 gap-1 text-center">
-            ${card.querySelector(".grid.grid-cols-6").innerHTML}
+          <div class="grid grid-cols-6 player-infos gap-1 text-center">
+            ${card.querySelector(".player-infos").innerHTML}
           </div>
           <button type="button" onclick="changerVerTeiran(this.closest('.card'))" 
             class="w-full mt-3 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5">
@@ -659,9 +660,10 @@ function deletePlayer(button) {
 function editePlayers(button) {
   const card = button.closest('.card');
   
-  const position = card.querySelector("h5").textContent;
-  const nom = card.querySelector(".text-center.text-sm.font-bold").textContent;
-  const rating = card.querySelector(".text-lg.font-bold").textContent;
+  const position = card.querySelector("h5").innerHTML;
+
+  const nom = card.querySelector(".text-center.text-sm.font-bold").innerHTML;
+  const rating = card.querySelector(".text-lg.font-bold").innerHTML;
   
   selectPosition.value = position;
   inputNom.value = nom;
@@ -671,22 +673,23 @@ function editePlayers(button) {
     inputsDivplayerGk.style.display = "block";
     inputsDivplayerCm.style.display = "none";
     
-    inputDiving.value = card.querySelector(".grid.grid-cols-6 div:nth-child(1) .text-sm.font-bold").textContent;
-    inputHandling.value = card.querySelector(".grid.grid-cols-6 div:nth-child(2) .text-sm.font-bold").textContent;
-    inputKicking.value = card.querySelector(".grid.grid-cols-6 div:nth-child(3) .text-sm.font-bold").textContent;
-    inputSpeed.value = card.querySelector(".grid.grid-cols-6 div:nth-child(4) .text-sm.font-bold").textContent;
-    inputPositioning.value = card.querySelector(".grid.grid-cols-6 div:nth-child(5) .text-sm.font-bold").textContent;
+    inputDiving.value = card.querySelector(".player-infos div:nth-child(1) ").innerHTML;
+    inputHandling.value = card.querySelector(".player-infos div:nth-child(2) ").innerHTML;
+    inputKicking.value = card.querySelector(".player-infos div:nth-child(3) ").innerHTML;
+    inputSpeed.value = card.querySelector(".player-infos div:nth-child(4) ").innerHTML;
+    inputPositioning.value = card.querySelector(".player-infos div:nth-child(5) ").innerHTML;
   } else {
     inputsDivplayerGk.style.display = "none";
     inputsDivplayerCm.style.display = "block";
     
-    inputShooting.value = card.querySelector(".grid.grid-cols-6 div:nth-child(1) .text-sm.font-bold").textContent;
-    inputPace.value = card.querySelector(".grid.grid-cols-6 div:nth-child(2) .text-sm.font-bold").textContent;
-    inputDribbling.value = card.querySelector(".grid.grid-cols-6 div:nth-child(3) .text-sm.font-bold").textContent;
-    inputDefending.value = card.querySelector(".grid.grid-cols-6 div:nth-child(4) .text-sm.font-bold").textContent;
-    inputPhysical.value = card.querySelector(".grid.grid-cols-6 div:nth-child(5) .text-sm.font-bold").textContent;
-    inputPassing.value = card.querySelector(".grid.grid-cols-6 div:nth-child(6) .text-sm.font-bold").textContent;
+    inputShooting.value = card.querySelector(".player-infos div:nth-child(1) ").innerHTML;
+    inputPace.value = card.querySelector(".player-infos div:nth-child(2) ").innerHTML;
+    inputDribbling.value = card.querySelector(".player-infos div:nth-child(3) ").innerHTML;
+    inputDefending.value = card.querySelector(".player-infos div:nth-child(4) ").innerHTML;
+    inputPhysical.value = card.querySelector(".player-infos div:nth-child(5) ").innerHTML;
+    inputPassing.value = card.querySelector(".player-infos div:nth-child(6) ").innerHTML;
   }
+  console.log("remove");
   
   card.remove();
   
@@ -699,12 +702,7 @@ function editePlayers(button) {
       resetForm();
       
   
-      btnEnter.onclick = function() {
-        if (validateForm()) {
-          selectDataFromInputs();
-          ajouterPlayers();
-        }
-      };
+    
     }
   };
 }
