@@ -91,7 +91,8 @@
   left: 17%;
   top: 3%;
 }
-.player1,
+
+
 .player2,
 .player3,
 .player4,
@@ -102,10 +103,26 @@
 .player9,
 .player10,
 .player11{
+  background-image: url(../images/badge_gold.webp);
+background-size: contain;
+background-position: center;
+  background-repeat: no-repeat;
+
   transform: rotateX(-10deg);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.player1{
+  background-image: url(../images/badge_gold.webp);
+  background-size: 50% 50%;
+  background-position: center;
+    background-repeat: no-repeat;
+  
+    transform: rotateX(-10deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .otton-display-formall{
   display: none;
